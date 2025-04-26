@@ -8,15 +8,15 @@ app = FastAPI()
 app.include_router(auth_routes.router, prefix="/auth", tags=["auth"])
 
 origins = [
-    "http://localhost:8000",  # основной сервис
+    "http://localhost:8000",
 ]
 app.add_middleware(AuthMiddleware)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,           # Список разрешённых источников
-    allow_credentials=True,          # Разрешаем куки и авторизацию
-    allow_methods=["*"],             # Разрешаем все методы (GET, POST и т.д.)
-    allow_headers=["*"],             # Разрешаем все заголовки
+    allow_origins=origins,         
+    allow_credentials=True,       
+    allow_methods=["*"],          
+    allow_headers=["*"],         
 )
 
 @app.get("/")
